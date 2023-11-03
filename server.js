@@ -25,8 +25,8 @@ app.post("/submit-form", (req, res) => {
   const { fullName, email, message } = req.body;
 
   const mailOptions = {
-    from: emailUser,
-    to: "your-email@example.com",
+    from: email,
+    to: "akashboard2021@gmaik.com",
     subject: "New Form Submission",
     text: `Full Name: ${fullName}\nEmail: ${email}\nMessage: ${message}`,
   };
