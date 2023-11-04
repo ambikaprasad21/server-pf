@@ -3,6 +3,7 @@ const nodemailer = require("nodemailer");
 const bodyParser = require("body-parser");
 const dotenv = require("dotenv");
 dotenv.config({ path: "./config.env" });
+// const sendEmail = require("./email");
 
 const app = express();
 
@@ -10,14 +11,16 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 // Replace these with your email credentials
-const emailUser = process.env.EMAIL_USER;
+const emailUser = process.env.EMAIL_USERNAME;
 const emailPass = process.env.EMAIL_PASSWORD;
+const myEmail = "akashboard2021@gmail.com";
 
 const transporter = nodemailer.createTransport({
-  service: "Gmail",
+  host: process.env.EMAIL_HOST,
+  port: process.env.EMAIL_PORT,
   auth: {
-    user: emailUser,
-    pass: emailPass,
+    user: process.env.EMAIL_USERNAME,
+    pass: process.env.EMAIL_PASSWORD,
   },
 });
 
@@ -26,8 +29,8 @@ app.post("/submit-form", (req, res) => {
 
   const mailOptions = {
     from: email,
-    to: "akashboard2021@gmaik.com",
-    subject: "New Form Submission",
+    to: "akashboard2021@gmail.com",
+    subject: "New Form Submission: portfolio",
     text: `Full Name: ${fullName}\nEmail: ${email}\nMessage: ${message}`,
   };
 
