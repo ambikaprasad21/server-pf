@@ -26,10 +26,10 @@ const sendEmail = async (options) => {
 
   //2) Define the email options
   const mailOptions = {
-    from: "Portfolio website ",
+    from: "Portfolio website form",
     to: options.email,
     subject: options.subject,
-    text: options.message,
+    text: options.query,
   };
 
   //3) Actually send email
